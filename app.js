@@ -27,8 +27,17 @@ function mostrarLista() {
 
     // Recorremos con un bucle for y mostramos con numeración
     for (let i = 0; i < amigos.length; i++) {
-        let li = document.createElement("li");
-        li.textContent = (i + 1) + ". " + amigos[i]; // numeración + nombre
-        lista.appendChild(li);
+        lista.innerHTML += "<li>" + (i + 1) + ". " + amigos[i] + "</li>";
+    }
+}
+
+// Función para sortear un amigo secreto
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("No hay nombres para sortear");
+    } else {
+        let indice = Math.floor(Math.random() * amigos.length);
+        let resultado = document.getElementById("resultado");
+        resultado.innerHTML = "<li>🎉 El amigo secreto es: " + amigos[indice] + "</li>";
     }
 }
