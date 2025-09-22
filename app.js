@@ -7,15 +7,28 @@ let amigos = [];
 // Función para agregar un nombre al array
 function agregarAmigo() {
     // Obtenemos el valor escrito en el input
-    let input = document.getElementById("Nombre amigo/a");
+    let input = document.getElementById("amigo");
     let nombre = input.value; 
 
-    // Guardamos el nombre en el array
+      if (nombre === "") {
+        alert("Por favor escribe un nombre válido");
+        return; // salimos si está vacío
+    }
+
     amigos.push(nombre);
+    input.value = ""; // limpiar campo
 
-    // Mostramos el contenido del array en consola
-    console.log(amigos);
+    mostrarLista(); // llamamos a la función que actualiza la lista
+}
 
-    // Limpiamos el input
-    input.value = "";
+function mostrarLista() {
+    let lista = document.getElementById("listaAmigos");
+    lista.innerHTML = ""; // limpiar antes de pintar de nuevo
+
+    // Recorremos con un bucle for y mostramos con numeración
+    for (let i = 0; i < amigos.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = (i + 1) + ". " + amigos[i]; // numeración + nombre
+        lista.appendChild(li);
+    }
 }
