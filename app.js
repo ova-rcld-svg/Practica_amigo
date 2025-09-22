@@ -28,12 +28,14 @@ function sortearAmigo() {
         alert("No hay nombres para sortear");
     } else {
         let indice = Math.floor(Math.random() * amigos.length);
-        document.getElementById("resultado").innerHTML =
-            "<li>🎉 El amigo secreto es: " + amigos[indice] + "</li>";
-          // 🔹 Reiniciar todo después del sorteo
+        let amigoSecreto = amigos[indice];
+
+        // 🔹 Mostrar el resultado con alert
+        alert("🎉 El amigo secreto es: " + amigoSecreto);
+
+        // Reiniciar todo
         amigos = [];
         document.getElementById("listaAmigos").innerHTML = "";
-        document.getElementById("amigo").value = "";         
-    
-        }
+        document.getElementById("amigo").value = "";
+    }
 }
